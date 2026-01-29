@@ -1,28 +1,45 @@
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
+      {/* Background stays at the bottom */}
       <LinearGradient
         colors={["#1a1a2e", "#16213e"]}
         style={styles.background}
       />
 
-      <Text style={styles.title}>TapStop</Text>
+      <SafeAreaView style={styles.content}>
+        <Text style={styles.title}>TapStop</Text>
 
-      <TouchableOpacity style={styles.mainButton} activeOpacity={0.7}>
-        <Text style={styles.buttonText}>TAP</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.mainButton} activeOpacity={0.7}>
+          <Text style={styles.buttonText}>TAP</Text>
+        </TouchableOpacity>
 
-      <Text style={styles.subtitle}>Ready to get started?</Text>
+        <Text style={styles.subtitle}>Ready to get started?</Text>
+      </SafeAreaView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: "center", justifyContent: "center" },
-  background: { position: "absolute", left: 0, right: 0, top: 0, bottom: 0 },
+  container: {
+    flex: 1,
+  },
+  background: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+  content: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   title: {
     fontSize: 48,
     fontWeight: "900",
@@ -44,6 +61,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 15,
   },
-  buttonText: { fontSize: 32, fontWeight: "bold", color: "#fff" },
-  subtitle: { color: "#888", marginTop: 30, fontSize: 16 },
+  buttonText: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  subtitle: {
+    color: "#888",
+    marginTop: 30,
+    fontSize: 16,
+  },
 });
