@@ -1,31 +1,49 @@
-import { StyleSheet } from 'react-native';
+import { LinearGradient } from "expo-linear-gradient";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
-
-export default function TabOneScreen() {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <LinearGradient
+        colors={["#1a1a2e", "#16213e"]}
+        style={styles.background}
+      />
+
+      <Text style={styles.title}>TapStop</Text>
+
+      <TouchableOpacity style={styles.mainButton} activeOpacity={0.7}>
+        <Text style={styles.buttonText}>TAP</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.subtitle}>Ready to get started?</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  container: { flex: 1, alignItems: "center", justifyContent: "center" },
+  background: { position: "absolute", left: 0, right: 0, top: 0, bottom: 0 },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 48,
+    fontWeight: "900",
+    color: "#fff",
+    marginBottom: 40,
+    letterSpacing: 2,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  mainButton: {
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    backgroundColor: "#0f3460",
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 4,
+    borderColor: "#e94560",
+    elevation: 20, // Android shadow
+    shadowColor: "#e94560", // iOS shadow
+    shadowOpacity: 0.5,
+    shadowRadius: 15,
   },
+  buttonText: { fontSize: 32, fontWeight: "bold", color: "#fff" },
+  subtitle: { color: "#888", marginTop: 30, fontSize: 16 },
 });
